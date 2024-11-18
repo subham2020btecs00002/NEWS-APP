@@ -1,0 +1,15 @@
+server:
+  port: 8888  # Port for the Config Server
+
+spring:
+  application:
+    name: configserver-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.stackroute.in/19043_subham-4/news  # Replace with your Git repository
+          username: 19043_subham-4
+          password: NvYYamNrziMbwE1Mv6XQ
+          skip-ssl-validation: true  # Ensure correct alignment
+          default-label: main  # Specify the branch name
