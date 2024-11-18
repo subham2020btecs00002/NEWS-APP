@@ -1,0 +1,77 @@
+----------------------------------------------LIST OF APIS--------------------------------------------------------------
+
+
+1. EUREKA SERVER (http://localhost:8761/)
+
+2. USER-PROFILE-SERVICE (lb://USER-PROFILE-SERVICE) (PORT - 8081)(PROTECTED - API-GATEWAY)
+
+  i) http://localhost:8088/api/v1/users/register?password={password} (POST) (PUBLIC) 
+   password in query parameters
+   {
+  "email": "sk@example.com",
+  "firstName": "subham",
+  "lastName": "kumar",
+  "phoneNumber": "1234567890"
+   }
+   
+   ii)http://localhost:8088/api/v1/users/{email} (GET) 
+   -- Authorization >> Bearer Token >> ADD THE TOKEN
+
+3. AUTENTICATION-SERVICE (PORT-8082) (PROTECTED)
+
+  i) http://localhost:8082/auth/generateToken (POST) 
+   {
+  "username": "aj@example.com",
+  "password": "mypassword123"
+   }
+   
+  ii)http://localhost:8082/auth/userProfile (GET) 
+   --Authorization >> Bearer Token >> ADD THE TOKEN
+ 
+4. NEWS-SERVICE (lb://NEWS-SERVICE) (PORT - 8083)(UNPROTECTED - API-GATEWAY)
+  
+  i) http://localhost:8088/search?query={search} (GET) 
+   
+   
+5. WISHLIST-SERVICE (lb://WISHLIST-SERVICE) (PORT - 8090)
+   
+  i) http://localhost:8088/api/wishlist (POST) (PROTECTED - API-GATEWAY)
+   -- ADD BODY
+   {
+    "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+    },
+    "author": "John Doe",
+    "title": "Sample News Title",
+    "description": "Sample News Description",
+    "url": "https://www.mandar.com",
+    "urlToImage": "https://www.example.com/image.jpg",
+    "publishedAt": "2023-10-12T06:00:00Z",
+    "content": "Sample news content."
+    }
+	THEN
+   -- Authorization >> Bearer Token >> ADD THE TOKEN
+   
+  ii) http://localhost:8088/api/wishlist (GET)
+   -- -- Authorization >> Bearer Token >> ADD THE TOKEN
+  
+  iii) http://localhost:8088/api/wishlist/{id} (GET)
+   -- Authorization >> Bearer Token >> ADD THE TOKEN
+   
+  iv) http://localhost:8088/api/wishlist/{id} (DELETE)
+   -- Authorization >> Bearer Token >> ADD THE TOKEN
+   
+   V) http://localhost:8088/api/wishlist/search?keyword={news} (GET)
+   -- Authorization >> Bearer Token >> ADD THE TOKEN
+   
+6. API-GATEWAY (lb://API-GATEWAY) (PORT - 8088) 
+   
+   i) USER-PROFILE-SERVICE
+     protecting all routes except (http://localhost:8088/api/v1/users/register?password={password} )
+   ii) NEWS-SERVICE
+     protecting all roues
+   iii) WISHLIST-SERVICE
+     protecting all routes
+   
+7. CONFIGSERVER-SERVICE
