@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="navbar-brand icon-wrapper">
+    <a routerLink="/" class="brand-link">Khabar</a>
+    <span class="tooltip">The News App</span> <!-- Tooltip for News App -->
+  </div>
+  
+  <!-- Menu icon for mobile view -->
+  <div class="menu-icon" (click)="toggleNavbar()">&#9776;</div>
+
+  <div class="navbar-links" [class.active]="navbarOpen">
+    <a routerLink="/login" *ngIf="!isLoggedIn" class="icon-wrapper">
+      Login
+      <span class="tooltip">Log into your account</span> <!-- Tooltip for Login -->
+    </a>
+    <a routerLink="/register" *ngIf="!isLoggedIn" class="icon-wrapper">
+      Register
+      <span class="tooltip">Register Yourself!!</span> <!-- Tooltip for Register -->
+    </a>
+
+    <!-- Dashboard icon with tooltip -->
+    <a routerLink="/dashboard" *ngIf="isLoggedIn" class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+        <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5"/>
+        <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+      </svg>
+      <span class="tooltip">Change password</span>
+    </a>
+
+    <!-- Wishlist icon with tooltip -->
+    <a routerLink="/wishlist" *ngIf="isLoggedIn" class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      </svg>
+      <span class="tooltip">View your wishlist</span>
+    </a>
+
+    <!-- Logout icon with tooltip -->
+    <a (click)="logout()" *ngIf="isLoggedIn && showLogout" class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+      </svg>
+      <span class="tooltip">Log out</span>
+    </a>
+  </div>
+</nav>

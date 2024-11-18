@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="./register.component.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="register-heading">Welcome! Create your account</h2>
+        <p class="register-subheading">Register to access your news and wishlist anytime, anywhere.</p>
+      
+        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+          <div class="form-group">
+            <input placeholder="Email" formControlName="email" class="form-control" />
+            <div *ngIf="registerForm.get('email')?.touched" class="text-danger">
+              <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid Email.</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <input placeholder="First Name" formControlName="firstName" class="form-control" />
+            <div *ngIf="registerForm.get('firstName')?.touched" class="text-danger">
+              <div *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <input placeholder="Last Name" formControlName="lastName" class="form-control" />
+            <div *ngIf="registerForm.get('lastName')?.touched" class="text-danger">
+              <div *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <input placeholder="Phone Number" formControlName="phoneNumber" class="form-control" />
+            <div *ngIf="registerForm.get('phoneNumber')?.touched" class="text-danger">
+              <div *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">Enter a valid 10 digit Number.</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <input type="password" placeholder="Password" formControlName="password" class="form-control" />
+            <div *ngIf="registerForm.get('password')?.touched" class="text-danger">
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">Use a mix of uppercase, lowercase, digits, and symbols.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" class="form-control" />
+            <div *ngIf="registerForm.get('confirmPassword')?.touched" class="text-danger">
+              <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
+              <div *ngIf="registerForm.hasError('mismatch')">Passwords do not match.</div>
+            </div>
+          </div>
+      
+          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+        </form>
+      
+        <p class="login-message">Already have an account? <a href="/login" class="register-link">Login here</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,431 @@
+body {
+  background-image: url('../../../public/freepik__upload__11304.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keeps background fixed */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+/* Icon Wrapper for Tooltip Positioning */
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Tooltip Styling */
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1em;
+  bottom: -35px; /* Adjust to place tooltip below icon */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 10;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show Tooltip on Hover */
+.icon-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.news-container {
+  max-width: 800px;
+  margin: 100px auto 50px auto; /* Add top margin to account for the navbar height */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.6); /* Adjust the opacity as needed */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* styles.css or news.component.css */
+.snackbar-success {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+.category-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  flex: 1;
+  padding: 15px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-secondary {
+  margin-top: 15px;
+  background-color: #6c757d;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.results-container {
+  margin-top: 20px;
+}
+
+.article-card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5); /* Adjust the opacity */
+  margin-bottom: 20px;
+  font-size: medium;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.article-card h3 {
+  margin-top: 0;
+}
+
+.article-card p {
+  color: #555;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.article-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.no-results {
+  text-align: center;
+  color: #555;
+  margin-top: 20px;
+}
+
+.social-share {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.social-share img {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+.wishlist-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .news-container {
+    padding: 15px;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-input {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .category-cards {
+    flex-direction: column;
+  }
+
+  .category-card {
+    margin: 10px 0;
+  }
+}
+
+/* Dark mode styles */
+/* styles.css or news.component.css */
+
+/* CSS */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .category-cards,
+.dark-mode .search-input,
+.dark-mode .article-card,
+.dark-mode .btn-primary,
+.dark-mode .alert {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .btn-primary {
+  background-color: #6200ee !important;
+}
+
+.dark-mode .alert {
+  background-color: #333333 !important;
+}
+.btn-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.clear-icon {
+  width: 35px;
+  height: 35px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+/* Responsive styles */
+@media (max-width: 600px) {
+  .news-container {
+    width: 85%; /* Use more width on smaller screens */
+    padding: 15px; /* Reduce padding */
+  }
+
+  .category-cards {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+  }
+
+  .category-card {
+    margin: 10px 0; /* Add margin for spacing */
+  }
+
+  .search-form {
+    flex-direction: column; /* Stack search input and button */
+  }
+
+  .search-input {
+    margin-bottom: 10px; /* Add margin for spacing */
+  }
+
+  .btn {
+    width: 100%; /* Full width for buttons on smaller screens */
+  }
+
+  .article-card {
+    padding: 15px; /* Adjust padding */
+  }
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e2f30;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6c6e70;
+}
+
+/* Custom Scrollbar Styles for Firefox */
+body {
+  scrollbar-width: thin; /* Use thin scrollbar */
+  scrollbar-color: #4e4f51 rgba(255, 255, 255, 0.8); /* Handle color and track color */
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center; /* Center the pagination controls */
+  align-items: center;     /* Align items vertically */
+  margin: 20px 0;         /* Add spacing around the controls */
+}
+
+.pagination-controls button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;              /* Text color */
+  border: none;              /* No border */
+  border-radius: 5px;       /* Rounded corners */
+  padding: 10px 15px;       /* Padding inside the button */
+  font-size: 16px;          /* Font size */
+  cursor: pointer;          /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin: 0 5px;           /* Spacing between buttons */
+}
+
+.pagination-controls button:disabled {
+  background-color: #cccccc; /* Grey color for disabled button */
+  cursor: not-allowed;       /* Not-allowed cursor for disabled */
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.pagination-controls span {
+  margin: 0 10px;           /* Spacing around the page number text */
+  font-size: 16px;          /* Font size for page number */
+}

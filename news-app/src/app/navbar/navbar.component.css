@@ -1,0 +1,126 @@
+/* navbar.component.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px; /* Set the desired height */
+  padding: 15px 20px; /* Increased vertical padding */
+  background-color: rgb(20, 20, 241); /* Slightly dark green */
+  color: white;
+  width: 100%; /* Ensure the navbar spans the full width */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  position: fixed; /* Make the navbar fixed */
+  top: 0; /* Position it at the top */
+  left: 0; /* Position it at the left edge */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+.logo {
+  height: 140px; /* Adjust the height as needed */
+}
+/* Wrapper for icons and tooltips */
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  
+}
+
+/* Tooltip styling */
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.875em;
+  top: 30px; /* Adjust based on icon position */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 100;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show tooltip on hover */
+.icon-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}.navbar-brand a {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px; /* Space between links */
+  font-size: 1.2em; /* Increased font size */
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.navbar-links img {
+  width: 34px; /* Adjust size as needed */
+  height: 34px; /* Adjust size as needed */
+  cursor: pointer; /* Change cursor to pointer for clickable icons */
+}
+
+.logout-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+/* Style for menu icon (hamburger icon) */
+.menu-icon {
+  display: none; /* Hide on larger screens */
+  font-size: 1.5em;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hide links by default on small screens */
+  }
+
+  .navbar-links.active {
+    display: flex; /* Show links when active */
+    flex-direction: row; /* Change to horizontal layout */
+    align-items: center; /* Align items vertically centered */
+    justify-content: flex-end; /* Align items to the right */
+    width: 100%;
+  }
+  
+  .menu-icon {
+    display: block;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand a {
+    font-size: 1.2em; /* Adjust font size for very small screens */
+  }
+
+  .navbar-links a {
+    font-size: 1em; /* Adjust font size for very small screens */
+  }
+
+  .navbar-links img {
+    width: 28px; /* Adjust size for very small screens */
+    height: 28px; /* Adjust size for very small screens */
+  }
+}

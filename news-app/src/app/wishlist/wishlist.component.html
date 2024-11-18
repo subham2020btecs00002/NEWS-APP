@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist Page</title>
+</head>
+<body>
+  <div class="wishlist-container">
+    <h2 style="font-size: 30px;">Welcome, {{ email }}</h2>
+    
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input
+        [(ngModel)]="searchKeyword"
+        type="text"
+        placeholder="Search your wishlist"
+        class="search-input"
+        (keyup)="onKeyUp($event)" 
+      />
+      <button (click)="searchWishlist()" class="search-button icon-wrapper">
+        <!-- <img
+          src="data:image/png;base64,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"
+          alt="Search"
+          class="search-icon"
+        /> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+        </svg>
+        <span class="tooltip">Search Wishlist</span>
+      </button>
+    </div>
+    
+    <h3 style="font-size: 30px;">Your Wishlist</h3>
+    
+    <div class="wishlist-items">
+      <div *ngFor="let article of wishlist" class="wishlist-item">
+        <img [src]="article.urlToImage" alt="{{ article.title }}" class="article-image" />
+        <div class="item-details">
+          <h4>{{ article.title }}</h4>
+          <p>{{ article.description }}</p>
+          <a [href]="article.url" target="_blank">Read more</a>
+        </div>
+        <button class="delete-button icon-wrapper" (click)="deleteWishlistItem(article.id)">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrLxzIN4-aKo34PlwwUuJTuQjVq8pCUv7nqQ&s"
+            alt="Delete"
+            class="delete-icon"
+          />
+          <span class="tooltip">Delete from Wishlist</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

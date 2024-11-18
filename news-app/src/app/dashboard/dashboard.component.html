@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="font-size: 30px;">Change Password</h2>
+        <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()" class="login-form">
+            <div class="form-group">
+              <input type="email" id="email" formControlName="email" class="form-control" readonly placeholder="Enter your email" />
+            </div>
+            <div class="form-group">
+              <input type="password" id="oldPassword" formControlName="oldPassword" required class="form-control" placeholder="Enter your old password" />
+              <div *ngIf="changePasswordForm.get('oldPassword')?.invalid && changePasswordForm.get('oldPassword')?.touched" class="error-message">
+                Use a mix of uppercase, lowercase, digits, and symbols.
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" id="newPassword" formControlName="newPassword" required class="form-control" placeholder="Enter your new password" />
+              <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['passwordStrength'] && changePasswordForm.get('newPassword')?.touched" class="error-message">
+                Use a mix of uppercase, lowercase, digits, and symbols.
+              </div>
+              <div *ngIf="changePasswordForm.errors?.['passwordsSame'] && changePasswordForm.get('newPassword')?.touched">
+                New password cannot be the same as the old password.
+              </div>
+            </div>
+            <button type="submit" class="btn">Change Password</button>
+          </form>
+              </div>
+</body>
+
+</html>

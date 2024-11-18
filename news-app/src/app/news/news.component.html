@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHABAR</title>
+    <link rel="stylesheet" href="./news.component.css">
+</head>
+<body>
+    <div #topOfPage></div>
+    <div class="news-container">
+        <div class="category-cards">
+            <div class="category-card" (click)="searchCategory('Cricket')">Cricket</div>
+            <div class="category-card" (click)="searchCategory('Entertainment')">Entertainment</div>
+            <div class="category-card" (click)="searchCategory('Elections')">Elections</div>
+            <div class="category-card" (click)="searchCategory('Breaking News')">Breaking News</div>
+            <div class="category-card" (click)="searchCategory('Indian Army')">Indian Army</div>
+        </div>
+
+        <form [formGroup]="newsForm" (ngSubmit)="onSearch()" class="search-form">
+            <input formControlName="query" placeholder="Search news..." class="search-input" />
+            <button type="submit" class="btn btn-primary icon-wrapper">
+                Search
+                <span class="tooltip">Search for news articles</span> <!-- Tooltip for Search -->
+            </button>
+            
+            <!-- Clear button with tooltip -->
+            <button type="button" (click)="clearSearch()" class="btn btn-clear icon-wrapper">
+                <img src="https://cdn-icons-png.flaticon.com/512/3807/3807871.png" alt="Clear" class="clear-icon" />
+                <span class="tooltip">Clear search</span> <!-- Tooltip for Clear -->
+            </button>
+                </form>
+
+        <div *ngIf="loading" class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+        <div *ngIf="articles.length" class="results-container">
+            <h2 style="font-size: 30px;">Search Results:</h2>
+
+            <div *ngFor="let article of articles" class="article-card">
+                <h3 style="font-size: 30px;">{{ article.title }}</h3>
+                <p>{{ article.description }}</p>
+                <a [href]="article.url" target="_blank" class="read-more">Read more</a>
+                <img *ngIf="article.urlToImage" [src]="article.urlToImage" alt="Article image" class="article-image" />
+                
+                <div class="social-share">
+                    <!-- Share on Twitter with Tooltip -->
+                    <a href="https://twitter.com/share?url={{article.url}}" target="_blank" class="icon-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="Share on Twitter">
+                        <span class="tooltip">Share on Twitter</span>
+                    </a>
+
+                    <!-- Share on Facebook with Tooltip -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}" target="_blank" class="icon-wrapper">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png" alt="Share on Facebook">
+                        <span class="tooltip">Share on Facebook</span>
+                    </a>
+
+                    <!-- Share on WhatsApp with Tooltip -->
+                    <a href="https://api.whatsapp.com/send?text={{article.url}}" target="_blank" class="icon-wrapper">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="Share on WhatsApp">
+                        <span class="tooltip">Share on WhatsApp</span>
+                    </a>
+
+                    <!-- Add to Wishlist with Tooltip -->
+                    <span class="icon-wrapper" (click)="addToWishlist(article)">
+                        <img src="https://cdn-icons-png.flaticon.com/128/12704/12704119.png" alt="Add to Wishlist" class="wishlist-icon">
+                        <span class="tooltip">Add to Wishlist</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination-controls">
+                <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+                <span>Page {{ currentPage }} of {{ totalPages }}</span>
+                <button (click)="nextPage()" [disabled]="currentPage >= totalPages">Next</button>
+            </div>
+        </div>
+
+        <div *ngIf="!articles.length && !loading" class="no-results">
+            <p>No results found. Try searching for something else.</p>
+        </div>
+    </div>
+</body>
+</html>
