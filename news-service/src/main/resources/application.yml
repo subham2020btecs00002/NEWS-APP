@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: news-service  # Set the application name
+
+  data:
+    mongodb:
+      database: newsdb               # MongoDB database name
+      port: 27017                     # MongoDB port
+      host: localhost                 # MongoDB host
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Eureka server URL
+  instance:
+    prefer-ip-address: true  # Prefer IP address for the instance
+
+news:
+  api:
+    url: https://newsapi.org/v2/everything  # News API URL
+    key: 70bc5c3cdbb54f9da95de1c07316f870    # News API key
+
+server:
+  port: 8083  # Set the server port to 8083
