@@ -1,0 +1,40 @@
+server:
+  port: 8088  # Set the server port to 8088
+
+spring:
+  application:
+    name: api-gateway  # Set the application name
+
+  cloud:
+    gateway:
+      routes:
+        - id: user-profile-service
+          uri: lb://USER-PROFILE-SERVICE
+          predicates:
+            - Path=/api/v1/users/**
+        - id: wishlist-service
+          uri: http://localhost:8090  # Direct URI for wishlist-service
+          predicates:
+            - Path=/api/wishlist/**
+        - id: news-service
+          uri: lb://NEWS-SERVICE
+          predicates:
+            - Path=/search
+
+eureka:
+  client:
+    register-with-eureka: true  # Register this service with Eureka
+    fetch-registry: true         # Fetch the registry of services from Eureka
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Eureka server URL
+  instance:
+    prefer-ip-address: true      # Prefer IP address for the instance
+
+jwt:
+  secret: 03PYB8TjTN0YCs6Pm2BI1wcI3uIMhwd7rcGRT5Rccug=  # Add your JWT secret key here
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/api-gateway.log  # Log file location
