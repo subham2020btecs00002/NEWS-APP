@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: wishlist-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/wishlistdb
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      prefer-ip-address: true
+
+server:
+  port: 8090
+
+jwt:
+  secret: 03PYB8TjTN0YCs6Pm2BI1wcI3uIMhwd7rcGRT5Rccug=  # Your JWT secret key
