@@ -87,7 +87,7 @@
 |            ▼                |
 |   +---------------------+    |
 |   |   News Service      | <----> |     External News API    |
-|   |   (Port: Managed by |        |                           |
+|   |   (Port: Managed by |        |        ( Feign Client )  |
 |   |       Eureka)       |        +---------------------------+
 |   | +-----------------+  |
 |   | |   API Endpoints |  |
